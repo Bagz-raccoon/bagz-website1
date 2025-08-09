@@ -150,6 +150,61 @@ header img{ max-width: 110px !important; height:auto !important; display:block; 
 
 /* Chart container contrast */
 .chart-wrap{ background: rgba(0,0,0,0.55) !important; }
+
+
+/* ===== v11 Visual Refresh ===== */
+
+/* Space/galaxy background with dark overlay */
+body{
+  background: linear-gradient(180deg, #0b0b12 0%, #1a1a22 100%) !important;
+}
+
+/* Bigger gold $BAGZ title with readable outline */
+header h1, h1.site-title{
+  color: #facc15 !important;
+  font-size: 64px !important;
+  line-height: 1.08 !important;
+  text-align: center !important;
+  margin: 10px 12px 8px 12px !important;
+  text-shadow: 0 2px 0 rgba(0,0,0,.85), 0 10px 30px rgba(250,204,21,.25);
+  -webkit-text-stroke: 1px rgba(0,0,0,.35);
+}
+@media(max-width:640px){
+  header h1, h1.site-title{ font-size: 44px !important; }
+}
+
+/* Section titles with subtle gold glow */
+h2, h3{
+  color: #fff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.5), 0 0 20px rgba(250,204,21,.12);
+}
+
+/* Panels high-contrast for readability over bg */
+.section, .feature-block, .footer, header{
+  background: rgba(0,0,0,0.7) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 12px !important;
+  padding: 18px !important;
+}
+
+/* Links & buttons in gold */
+a, .footer a { color: #facc15 !important; }
+a.btn, .btn, .btn-secondary, .sticky-buy{
+  background: #facc15 !important; color: #111 !important; font-weight: 800;
+  border-radius: 10px; padding: 10px 16px; text-decoration:none;
+  box-shadow: 0 8px 22px rgba(250,204,21,.35);
+}
+a.btn:hover, .btn:hover, .btn-secondary:hover{
+  filter: brightness(1.05); transform: translateY(-1px);
+}
+
+/* Clamp header image size */
+header img{ max-width: 110px !important; height: auto !important; display: block; margin: 0 auto 6px auto; }
+@media(max-width:640px){ header img{ max-width: 86px !important; } }
+
+/* Spacing so content isn't at the edge */
+body { padding: 6px; }
+main { padding-bottom: 72px; } /* to avoid sticky overlap */
 </style>
 </head>
 <body>
@@ -165,7 +220,6 @@ header img{ max-width: 110px !important; height:auto !important; display:block; 
 <iframe src="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" style="width:100%;height:420px;border:0;background:transparent" title="BAGZ Chart"></iframe>
 <img alt="$BAGZ" src="bagz_raccoon.png" style="position:absolute;right:6px;bottom:6px;width:90px;opacity:0.9"/>
 </div>
-<p style="opacity:0.8;font-size:12px;margin-top:6px">Tip: paste your Birdeye or DEXTools embed URL into the iframe <code>src</code>.</p>
 </div>
 <div class="section links">
 <a href="https://t.me/Bagz_Raccoon1" target="_blank">Telegram</a>
@@ -182,7 +236,7 @@ header img{ max-width: 110px !important; height:auto !important; display:block; 
 <li><strong>Total Supply:</strong> 1,000,000,000 BAZ</li>
 <li><strong>Taxes:</strong> 0% in Phase 1 — simple buys/sells. <em>Phase 2</em> may introduce light mechanics for sustainability (TBA).</li>
 <li><strong>Liquidity:</strong> Locked until Aug 8, 2026 — <a class="btn-secondary" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">View Streamflow Lock</a></li>
-<li><strong>Contract (Mint):</strong> <code>B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</code></li>
+<li><strong>Contract (Mint):</strong> <code></code></li>
 </ul>
 </div>
 <div class="section feature-block">
@@ -231,7 +285,7 @@ header img{ max-width: 110px !important; height:auto !important; display:block; 
 <h2>Features Coming Soon</h2>
 <p>NFTs with Holder Perks | Staking | DAO Governance | Raccoon Raider Airdrops</p>
 </div>
-<div class="footer">
+<div class="footer" style="padding-bottom: 16px;">
     Contract: B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon
   </div>
 <a class="sticky-buy" href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank">BUY $BAGZ on Moonshot</a><div class="section">
