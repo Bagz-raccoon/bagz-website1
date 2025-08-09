@@ -29,11 +29,105 @@
 .roadmap-bricks h3 { margin: 0 0 6px 0; color: #facc15; }
 .roadmap-bricks .status { color: #fff; opacity:.85; font-size: .9em }
 .roadmap-bricks ul { margin: 0 0 0 18px; line-height: 1.75; }
+
+
+/* ===== Visual Overhaul ===== */
+
+/* Dark space gradient + animated starfield */
+body{
+  background: radial-gradient(1200px 700px at 20% -10%, #0b1020, #070c18 40%, #04070e 70%, #02040a 100%) fixed;
+}
+body::before, body::after{
+  content:"";
+  position: fixed; inset:0; pointer-events:none; z-index:0;
+}
+/* tiny stars layer */
+body::before{
+  background:
+    radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 75% 35%, rgba(255,255,255,0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 35% 80%, rgba(255,255,255,0.55) 50%, transparent 51%),
+    radial-gradient(1px 1px at 60% 60%, rgba(255,255,255,0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.55) 50%, transparent 51%);
+  animation: starPan 80s linear infinite;
+  opacity: .6;
+}
+/* larger subtle stars */
+body::after{
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.35) 50%, transparent 51%),
+    radial-gradient(2px 2px at 80% 70%, rgba(255,255,255,0.25) 50%, transparent 51%),
+    radial-gradient(2px 2px at 45% 50%, rgba(255,255,255,0.25) 50%, transparent 51%),
+    radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,0.25) 50%, transparent 51%);
+  animation: starPan 120s linear infinite reverse;
+  opacity: .35;
+}
+@keyframes starPan{
+  0%{ transform: translate3d(0,0,0); }
+  100%{ transform: translate3d(-200px,-120px,0); }
+}
+main, header, .section, .footer { position: relative; z-index:1; }
+
+/* Headings + readability */
+h1,h2,h3{ letter-spacing: .3px; }
+h1{ text-shadow: 0 6px 30px rgba(250, 204, 21, .15); }
+.section{ backdrop-filter: saturate(140%); }
+
+/* Neon CTA buttons */
+.btn, .btn-secondary, .sticky-buy {
+  box-shadow: 0 0 0 rgba(250, 204, 21, 0);
+  transition: box-shadow .2s ease, transform .2s ease, filter .2s ease;
+}
+.btn{
+  background: linear-gradient(180deg, #ffea70, #facc15);
+  color: #111;
+}
+.btn:hover{ box-shadow: 0 10px 25px rgba(250,204,21,.35); transform: translateY(-1px) scale(1.01); }
+.btn-secondary:hover{ box-shadow: 0 10px 25px rgba(255,255,255,.15); transform: translateY(-1px); }
+.sticky-buy{ box-shadow: 0 10px 35px rgba(250,204,21,.35); animation: pulse 3s ease-in-out infinite; }
+@keyframes pulse{
+  0%{ transform: translateY(0) scale(1); box-shadow: 0 10px 35px rgba(250,204,21,.35); }
+  50%{ transform: translateY(-1px) scale(1.03); box-shadow: 0 12px 45px rgba(250,204,21,.45); }
+  100%{ transform: translateY(0) scale(1); box-shadow: 0 10px 35px rgba(250,204,21,.35); }
+}
+
+/* Chart card glow */
+.chart-wrap{
+  border: 1px solid rgba(250,204,21,.25) !important;
+  box-shadow: 0 0 40px rgba(250,204,21,.06), inset 0 0 30px rgba(250,204,21,.04);
+}
+
+/* Brick-wall roadmap styling */
+.roadmap-bricks{
+  position: relative;
+  overflow: hidden;
+}
+.roadmap-bricks::before{
+  content:"";
+  position: absolute; inset:0; z-index:-1;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 24px),
+    repeating-linear-gradient(90deg, transparent 0 24px, rgba(255,255,255,0.06) 24px 26px),
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35));
+  filter: contrast(110%) brightness(90%);
+}
+.roadmap-bricks .phase{
+  transform: translateY(8px);
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+.roadmap-bricks .phase:hover{
+  transform: translateY(3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35);
+}
+
+/* Tokenomics list clarity */
+.section.feature-block ul li { margin: 6px 0; }
 </style>
 </head>
 <body>
 <header>
-<img alt="Bagz the Raccoon" src="bagz_raccoon.png"/>
+<img alt="Bagz the Raccoon" src="bagz_raccoon.png" style="width:120px;filter: drop-shadow(0 6px 18px rgba(0,0,0,.5));"/>
 <h1>$BAGZ</h1>
 <p>Just a Kit from Akron — Look at me now! 💎🙌</p>
 <div style="margin-top:8px;font-size:12px;opacity:0.9;">Network: Solana (SOL)</div></header>
@@ -42,7 +136,7 @@
 <div class="chart-wrap" style="position:relative;border:1px solid rgba(255,255,255,0.15);border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.25)">
 <!-- Replace src with your Birdeye/DEXTools widget URL for the token (Solana) -->
 <iframe src="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" style="width:100%;height:420px;border:0;background:transparent" title="BAGZ Chart"></iframe>
-<img alt="$BAGZ" src="bagz_raccoon.png" style="position:absolute;right:6px;bottom:6px;width:90px;opacity:0.9"/>
+<img alt="$BAGZ" src="bagz_raccoon.png" style="position:absolute;right:6px;bottom:6px;width:120px;opacity:0.9filter: drop-shadow(0 6px 18px rgba(0,0,0,.5));"/>
 </div>
 <p style="opacity:0.8;font-size:12px;margin-top:6px">Tip: paste your Birdeye or DEXTools embed URL into the iframe <code>src</code>.</p>
 </div>
