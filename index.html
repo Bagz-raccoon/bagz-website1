@@ -87,6 +87,69 @@ a.btn:hover, .btn:hover, .btn-secondary:hover{
 
 /* Section spacing */
 .section{ padding: 18px !important; margin: 14px 0 !important; background: rgba(0,0,0,0.25); border-radius: 12px; border:1px solid rgba(255,255,255,0.08); }
+
+
+/* ===== High-contrast pass: make text readable and $BAGZ gold ===== */
+
+/* Ensure background stars stay behind everything */
+body::before, body::after{ z-index: 0 !important; }
+main, header, .section, .footer { position: relative; z-index: 1 !important; }
+
+/* Hero/header panel: darker solid so text pops */
+header{
+  background: rgba(0,0,0,0.70) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 14px !important;
+  padding: 18px 14px !important;
+  margin: 12px !important;
+}
+
+/* Make $BAGZ title gold with outline for readability */
+header h1, h1.site-title{
+  color: #facc15 !important;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,.8),
+    0 2px 6px rgba(0,0,0,.6),
+    0 0 30px rgba(250,204,21,.25);
+  -webkit-text-stroke: 1px rgba(0,0,0,.35);
+}
+
+/* Global text readability */
+body, p, li, .section, .feature-block { color: #ffffff !important; }
+h2, h3 { color: #ffffff !important; text-shadow: 0 2px 10px rgba(0,0,0,.4); }
+strong { color: #fff !important; }
+
+/* Sections: increase opacity so background isn't overpowering */
+.section, .feature-block, .footer{
+  background: rgba(0,0,0,0.65) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  padding: 18px !important;
+}
+
+/* Buttons and links: gold and legible */
+a, .footer a { color: #facc15 !important; }
+a.btn, .btn, .btn-secondary, .sticky-buy{
+  background: #facc15 !important; color: #111 !important; font-weight: 800;
+  border-radius: 10px; padding: 10px 16px;
+  box-shadow: 0 8px 22px rgba(250,204,21,.35);
+}
+a.btn:hover, .btn:hover, .btn-secondary:hover{
+  filter: brightness(1.03); transform: translateY(-1px);
+}
+
+/* Header image clamp again (safety) */
+header img{ max-width: 110px !important; height:auto !important; display:block; margin: 0 auto 6px auto; }
+@media(max-width:640px){ header img{ max-width: 86px !important; } }
+
+/* Roadmap bricks: keep contrast */
+.roadmap-bricks{ background: rgba(0,0,0,0.35) !important; }
+.roadmap-bricks .phase{ background: rgba(0,0,0,0.55) !important; }
+.roadmap-bricks h3{ color:#facc15 !important; }
+.roadmap-bricks .status{ color:#fff !important; }
+
+/* Chart container contrast */
+.chart-wrap{ background: rgba(0,0,0,0.55) !important; }
 </style>
 </head>
 <body>
