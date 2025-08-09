@@ -1,194 +1,122 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>$BAGZ — Official Site</title>
-  <meta name="description" content="$BAGZ — Solana meme coin. Buy on Moonshot. Liquidity locked. Join the community."/>
-  <style>
-    /* ===== Base & Background ===== */
-    :root{
-      --gold:#facc15;
-      --bg-blue-1:#9bd5ff;
-      --bg-blue-2:#5aaeff;
-      --bg-blue-3:#2c6bd9;
-      --panel:rgba(0,0,0,.72);
-      --border:rgba(255,255,255,.14);
-      --text:#fff;
-      --ink:#111;
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>$BAGZ Meme Coin</title>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      color: white;
+      background-attachment: fixed;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: linear-gradient(180deg, var(--bg-blue-1) 0%, var(--bg-blue-2) 40%, var(--bg-blue-3) 100%) !important;
-      padding:10px;
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
     }
-    a{ color: var(--gold); }
-    .container{ max-width: 980px; margin: 0 auto; }
-    .panel{ background: var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px; }
-    .btn{ background:var(--gold); color:var(--ink); font-weight:800; border-radius:10px; padding:10px 16px; display:inline-block; text-decoration:none; box-shadow:0 8px 22px rgba(250,204,21,.35); transition:.2s transform, .2s filter; }
-    .btn:hover{ filter:brightness(1.05); transform:translateY(-1px); }
-    .btn.alt{ background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.2); box-shadow:none; }
-    .grid{ display:grid; gap:14px; }
-    .two{ grid-template-columns: 1fr; }
-    @media(min-width:860px){ .two{ grid-template-columns: 1.2fr .8fr; } }
-    h1,h2,h3{ margin:0 0 8px 0; }
-    h2{ text-shadow: 0 2px 10px rgba(0,0,0,.5), 0 0 20px rgba(250,204,21,.12); }
-    .spacer{ height:10px; }
-    .mt8{ margin-top:8px; }
-    .mb8{ margin-bottom:8px; }
-    .center{ text-align:center; }
-
-    /* ===== Header / Hero ===== */
-    header.panel{ text-align:center; }
-    header img{ max-width:110px; height:auto; display:block; margin:0 auto 6px; }
-    header h1{
-      color:var(--gold);
-      font-size:64px; line-height:1.08;
-      text-shadow: 0 2px 0 rgba(0,0,0,.85), 0 10px 30px rgba(250,204,21,.25);
-      -webkit-text-stroke: 1px rgba(0,0,0,.35);
-      margin:10px 12px 8px;
+    header img {
+      width: 200px;
     }
-    @media(max-width:640px){ header h1{ font-size:44px; } }
-    .hero-sub{ font-size:20px; font-weight:700; color:var(--gold);
-      text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 14px rgba(250,204,21,.2); }
+    h1 {
+      font-size: 3rem;
+      margin: 0.5rem 0;
+    }
+    .section {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #facc15;
+      color: black;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .feature-block {
+      background: #374151;
+      margin: 1rem auto;
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 800px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin: 3rem 1rem 1rem;
+    }
+  
 
-    .buttons a{ margin:6px 8px 0 0; }
-
-    /* ===== Sections ===== */
-    .section.panel{ margin:14px 0; }
-    .token-list li{ margin:6px 0; }
-    code{ background:rgba(0,0,0,.45); padding:2px 6px; border-radius:6px; }
-
-    /* Chart card */
-    .chart-wrap{ position:relative; border:1px solid rgba(250,204,21,.25); border-radius:12px; overflow:hidden; background:rgba(0,0,0,.55); }
-    .chart-wrap iframe{ width:100%; height:420px; border:0; background:transparent; }
-    .chart-wrap img.overlay{ position:absolute; right:6px; bottom:6px; width:100px; filter: drop-shadow(0 6px 18px rgba(0,0,0,.5)); }
-
-    /* Roadmap bricks */
-    .bricks{ background:rgba(0,0,0,.5); border-radius:12px; padding:12px; }
-    .phase{ background:rgba(0,0,0,.6); border-left:5px solid var(--gold); border-radius:8px; padding:10px; margin:10px 0; }
-    .phase h3{ color:var(--gold); margin:0 0 6px 0; }
-    .tagline{ display:block; font-size:20px; font-weight:800; color:var(--gold);
-      text-shadow:0 2px 0 rgba(0,0,0,.6), 0 0 20px rgba(250,204,21,.25); margin-top:6px; }
-
-    /* Sticky buy */
-    .sticky{ position:fixed; right:14px; bottom:14px; z-index:50; }
-
-    /* Footer */
-    footer.panel{ text-align:center; margin-top:14px; padding-bottom:20px; }
-  </style>
+/* Starry background */
+body::before{
+  content:'';
+  position: fixed;
+  inset:0;
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 70% 80%, rgba(255,255,255,0.35), transparent 60%),
+    radial-gradient(1.5px 1.5px at 40% 60%, rgba(255,255,255,0.3), transparent 60%),
+    radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,0.35), transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+main, header, .section, .footer { position: relative; z-index:1; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header / Hero -->
-    <header class="panel">
-      <img src="bagz_raccoon.png" alt="Bagz the Raccoon"/>
-      <h1>$BAGZ</h1>
-      <p class="hero-sub">Solana (SOL) • Paired with USDC • Liquidity Locked</p>
-      <div class="buttons">
-        <a class="btn" target="_blank" href="https://moonshot.com?ref=Loc1PzLVfq">BUY ON MOONSHOT</a>
-        <a class="btn alt" target="_blank" href="https://t.me/bagzraccoon/3">Join Telegram</a>
-        <a class="btn alt" target="_blank" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh">View LP Lock</a>
-      </div>
-    </header>
-
-    <!-- Live Chart -->
-    <div class="section panel">
-      <h2>$BAGZ Live Chart</h2>
-      <div class="chart-wrap mt8">
-        <iframe src="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" title="BAGZ Chart"></iframe>
-        <img class="overlay" src="bagz_raccoon.png" alt="$BAGZ"/>
-      </div>
-    </div>
-
-    <!-- Tokenomics -->
-    <div class="section panel">
-      <h2>Tokenomics</h2>
-      <ul class="token-list">
-        <li><strong>Chain/Network:</strong> Solana (SOL)</li>
-        <li><strong>Pair:</strong> $BAGZ / USDC</li>
-        <li><strong>Total Supply:</strong> 1,000,000,000 BAZ</li>
-        <li><strong>Taxes:</strong> 0% in Phase 1 — simple buys/sells. <em>Phase 2</em> may introduce light mechanics (TBA).</li>
-        <li><strong>Liquidity:</strong> Locked until Aug 8, 2026 — <a target="_blank" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh">View Streamflow Lock</a></li>
-        <li><strong>Contract (Mint):</strong> <code>B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</code></li>
-      </ul>
-    </div>
-
-    <!-- Roadmap -->
-    <div class="section panel">
-      <h2>$BAGZ Roadmap</h2>
-      <span class="tagline">From the streets to the moon — just a kid from Akron, look at me now!</span>
-      <div class="bricks mt8">
-        <div class="phase">
-          <h3>Phase 1: The Launch <span class="status">(Complete)</span></h3>
-          <ul>
-            <li>Token launched</li>
-            <li>Built strong BagzArmy community</li>
-            <li>Official merch store live (50% profits → marketing)</li>
-          </ul>
-        </div>
-        <div class="phase">
-          <h3>Phase 2: Building Momentum <span class="status">(Now)</span></h3>
-          <ul>
-            <li>Influencer + meme marketing push</li>
-            <li>Teasers for holder rewards</li>
-            <li>Expanding Telegram & X presence</li>
-            <li>NFT Genesis collection announced</li>
-          </ul>
-        </div>
-        <div class="phase">
-          <h3>Phase 3: Utility & Rewards <span class="status">(Next)</span></h3>
-          <ul>
-            <li>Launch Genesis NFT collection</li>
-            <li>Holder rewards system</li>
-            <li>Strategic partnerships</li>
-            <li>Push through $20K → $50K MC</li>
-          </ul>
-        </div>
-        <div class="phase">
-          <h3>Phase 4: The Moon Mission <span class="status">(Future)</span></h3>
-          <ul>
-            <li>Full staking platform</li>
-            <li>DAO governance</li>
-            <li>Large-scale partnerships</li>
-            <li>$0.01 target milestone</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Merch -->
-    <div class="section panel grid two">
-      <div>
-        <h2>Official $BAGZ Merch</h2>
-        <p>Rep the raccoon and fuel the mission. <strong>50% of profits go to marketing.</strong></p>
-        <a class="btn" target="_blank" href="https://bagzraccoon.etsy.com/listing/4348345111">Shop on Etsy</a>
-      </div>
-      <div class="center" style="font-size:60px">🦝💎</div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="panel">
-      <div>Network: Solana (SOL) • Pair: $BAGZ/USDC</div>
-      <div class="mt8">
-        <a class="btn" target="_blank" href="https://moonshot.com?ref=Loc1PzLVfq">BUY $BAGZ</a>
-        <a class="btn alt" target="_blank" href="https://t.me/bagzraccoon/3">Join Telegram</a>
-      </div>
-      <div class="mt8" style="font-size:12px; opacity:.7">© <span id="year"></span> $BAGZ — Community Powered</div>
-    </footer>
-  </div>
-
-  <!-- Sticky Buy -->
-  <a class="btn sticky" target="_blank" href="https://moonshot.com?ref=Loc1PzLVfq">BUY $BAGZ</a>
-
-  <script>
-    // year stamp
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<header>
+<img alt="Bagz the Raccoon" src="bagz_raccoon.png"/>
+<h1>$BAGZ</h1>
+<p>Just a Kit from Akron — Look at me now! 💎🙌</p>
+<div style="margin-top:8px;font-size:12px;opacity:0.9;">Network: Solana (SOL)</div><div style="margin-top:8px; display:flex; gap:10px; flex-wrap:wrap; font-size:14px;"><a class="btn-secondary" href="https://x.com/Bagz4TheMoon" target="_blank">X (Twitter)</a><a class="btn-secondary" href="https://discord.gg/jGPWm6s6" target="_blank">Discord</a></div></header>
+<div class="section">
+<h2>$BAGZ Live Chart</h2>
+<div class="chart-wrap" style="position:relative;border:1px solid rgba(255,255,255,0.15);border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.25)">
+<!-- Replace src with your Birdeye/DEXTools widget URL for the token (Solana) -->
+<iframe src="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" style="width:100%;height:420px;border:0;background:transparent" title="BAGZ Chart"></iframe>
+<img alt="$BAGZ" src="bagz_raccoon.png" style="position:absolute;right:6px;bottom:6px;width:90px;opacity:0.9"/>
+</div>
+<p style="opacity:0.8;font-size:12px;margin-top:6px">Tip: paste your Birdeye or DEXTools embed URL into the iframe <code>src</code>.</p>
+</div>
+<div class="section links">
+<a href="https://t.me/Bagz_Raccoon1" target="_blank">Telegram</a>
+<a href="https://discord.gg/XnedHurc" target="_blank">Discord</a>
+<a href="https://x.com/Bagz4TheMoon" target="_blank">X / Twitter</a>
+<a href="https://www.tiktok.com/@bagzraccoons" target="_blank">TikTok</a>
+<a href="https://moonshot.com/B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon?ref=Loc1PzLVfq" target="_blank">Buy $BAGZ</a>
+</div>
+<div class="section feature-block">
+<h2>Tokenomics</h2>
+<ul style="line-height:1.8">
+<li><strong>Chain/Network:</strong> Solana (SOL)</li>
+<li><strong>Pair:</strong> $BAGZ / USDC</li>
+<li><strong>Total Supply:</strong> 1,000,000,000 BAZ</li>
+<li><strong>Taxes:</strong> 0% in Phase 1 — simple buys/sells. <em>Phase 2</em> may introduce light mechanics for sustainability (TBA).</li>
+<li><strong>Liquidity:</strong> Locked until Aug 8, 2026 — <a class="btn-secondary" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">View Streamflow Lock</a></li>
+<li><strong>Contract (Mint):</strong> <code>B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</code></li>
+</ul>
+</div>
+<div class="section feature-block">
+<h2>Roadmap</h2>
+<div class="roadmap-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px">
+<div class="feature-card"><strong>Phase 1 (Now)</strong><br/>Website refresh · $BAGZ/USDC pair · LP Lock · Meme contests · Community growth</div>
+<div class="feature-card"><strong>Phase 2</strong><br/>Genesis Raccoon NFTs · Staking perks · Holder roles · Light tax mechanics (if enabled)</div>
+<div class="feature-card"><strong>Phase 3</strong><br/>CEX outreach · Partnerships · Utilities &amp; tools · Marketing blitz</div>
+</div>
+</div>
+<div class="section feature-block">
+<h2>Features Coming Soon</h2>
+<p>NFTs with Holder Perks | Staking | DAO Governance | Raccoon Raider Airdrops</p>
+</div>
+<div class="footer">
+    Contract: B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon
+  <br/><a href="https://x.com/Bagz4TheMoon" target="_blank">X (Twitter)</a><span></span> · <a href="https://discord.gg/jGPWm6s6" target="_blank">Discord</a></div>
 </body>
 </html>
