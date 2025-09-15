@@ -1,188 +1,124 @@
-
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>$BAGZ — Official Site</title>
-<meta content="$BAGZ — Solana meme coin. Buy on Moonshot. Liquidity locked. Join the community." name="description"/>
-<style>
-    /* ===== Base & Background ===== */
-    :root{
-      --gold:#facc15;
-      --bg-blue-1:#9bd5ff;
-      --bg-blue-2:#5aaeff;
-      --bg-blue-3:#2c6bd9;
-      --panel:rgba(0,0,0,.72);
-      --border:rgba(255,255,255,.14);
-      --text:#fff;
-      --ink:#111;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: linear-gradient(180deg, var(--bg-blue-1) 0%, var(--bg-blue-2) 40%, var(--bg-blue-3) 100%) !important;
-      padding:10px;
-    }
-    a{ color: var(--gold); }
-    .container{ max-width: 980px; margin: 0 auto; }
-    .panel{ background: var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px; }
-    .btn{ background:var(--gold); color:var(--ink); font-weight:800; border-radius:10px; padding:10px 16px; display:inline-block; text-decoration:none; box-shadow:0 8px 22px rgba(250,204,21,.35); transition:.2s transform, .2s filter; }
-    .btn:hover{ filter:brightness(1.05); transform:translateY(-1px); }
-    .btn.alt{ background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.2); box-shadow:none; }
-    .grid{ display:grid; gap:14px; }
-    .two{ grid-template-columns: 1fr; }
-    @media(min-width:860px){ .two{ grid-template-columns: 1.2fr .8fr; } }
-    h1,h2,h3{ margin:0 0 8px 0; }
-    h2{ text-shadow: 0 2px 10px rgba(0,0,0,.5), 0 0 20px rgba(250,204,21,.12); }
-    .spacer{ height:10px; }
-    .mt8{ margin-top:8px; }
-    .mb8{ margin-bottom:8px; }
-    .center{ text-align:center; }
-
-    /* ===== Header / Hero ===== */
-    header.panel{ text-align:center; }
-    header img{ max-width:110px; height:auto; display:block; margin:0 auto 6px; }
-    header h1{
-      color:var(--gold);
-      font-size:64px; line-height:1.08;
-      text-shadow: 0 2px 0 rgba(0,0,0,.85), 0 10px 30px rgba(250,204,21,.25);
-      -webkit-text-stroke: 1px rgba(0,0,0,.35);
-      margin:10px 12px 8px;
-    }
-    @media(max-width:640px){ header h1{ font-size:44px; } }
-    .hero-sub{ font-size:20px; font-weight:700; color:var(--gold);
-      text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 14px rgba(250,204,21,.2); }
-
-    .buttons a{ margin:6px 8px 0 0; }
-
-    /* ===== Sections ===== */
-    .section.panel{ margin:14px 0; }
-    .token-list li{ margin:6px 0; }
-    code{ background:rgba(0,0,0,.45); padding:2px 6px; border-radius:6px; }
-
-    /* Chart card */
-    .chart-wrap{ position:relative; border:1px solid rgba(250,204,21,.25); border-radius:12px; overflow:hidden; background:rgba(0,0,0,.55); }
-    .chart-wrap iframe{ width:100%; height:420px; border:0; background:transparent; }
-    .chart-wrap img.overlay{ position:absolute; right:6px; bottom:6px; width:100px; filter: drop-shadow(0 6px 18px rgba(0,0,0,.5)); }
-
-    /* Roadmap bricks */
-    .bricks{ background:rgba(0,0,0,.5); border-radius:12px; padding:12px; }
-    .phase{ background:rgba(0,0,0,.6); border-left:5px solid var(--gold); border-radius:8px; padding:10px; margin:10px 0; }
-    .phase h3{ color:var(--gold); margin:0 0 6px 0; }
-    .tagline{ display:block; font-size:20px; font-weight:800; color:var(--gold);
-      text-shadow:0 2px 0 rgba(0,0,0,.6), 0 0 20px rgba(250,204,21,.25); margin-top:6px; }
-
-    /* Sticky buy */
-    .sticky{ position:fixed; right:14px; bottom:14px; z-index:50; }
-
-    /* Footer */
-    footer.panel{ text-align:center; margin-top:14px; padding-bottom:20px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$BAGZ • From Akron to the Moon</title>
+  <meta name="description" content="$BAGZ is a community token on Solana with staking, NFTs, and a mission to change lives.">
+  <meta property="og:title" content="$BAGZ • From Akron to the Moon">
+  <meta property="og:description" content="Buy • Stake • Mint • Join the #BAGZArmy">
+  <meta property="og:image" content="assets/img/og-bagz.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="container">
-<!-- Header / Hero -->
-<header class="panel">
-<img alt="Bagz the Raccoon" src="bagz_raccoon.png"/>
-<h1>$BAGZ</h1>
-<p class="hero-sub">Solana (SOL) • Paired with USDC • Liquidity Locked</p>
-<div class="buttons">
-<a class="btn" href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank">BUY ON MOONSHOT</a>
-<a class="btn alt" href="https://t.me/bagzraccoon/3" target="_blank">Join Telegram</a>
-<a class="btn alt" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">View LP Lock</a>
-</div>
-</header>
-<!-- Live Chart -->
-<div class="section panel">
-<h2>$BAGZ Live Chart</h2>
-<div class="chart-wrap mt8">
-<iframe src="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" title="BAGZ Chart"></iframe>
-<img alt="$BAGZ" class="overlay" src="bagz_raccoon.png"/>
-</div>
-</div>
-<!-- Tokenomics -->
-<div class="section panel">
-<h2>Tokenomics</h2>
-<ul class="token-list">
-<li><strong>Chain/Network:</strong> Solana (SOL)</li>
-<li><strong>Pair:</strong> $BAGZ / USDC</li>
-<li><strong>Total Supply:</strong> 1,000,000,000 BAZ</li>
-<li><strong>Taxes:</strong> 0% in Phase 1 — simple buys/sells. <em>Phase 2</em> may introduce light mechanics (TBA).</li>
-<li><strong>Liquidity:</strong> Locked until Aug 8, 2026 — <a href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">View Streamflow Lock</a></li>
-<li><strong>Contract (Mint):</strong> <code>B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</code></li>
-</ul>
-</div>
-<!-- Roadmap -->
-<div class="section panel">
-<h2>$BAGZ Roadmap</h2>
-<span class="tagline">From the streets to the moon — just a kid from Akron, look at me now!</span>
-<div class="bricks mt8">
-<div class="phase">
-<h3>Phase 1: The Launch <span class="status">(Complete)</span></h3>
-<ul>
-<li>Token launched</li>
-<li>Built strong BagzArmy community</li>
-<li>Official merch store live (50% profits → marketing)</li>
-</ul>
-</div>
-<div class="phase">
-<h3>Phase 2: Building Momentum <span class="status">(Now)</span></h3>
-<ul>
-<li>Influencer + meme marketing push</li>
-<li>Teasers for holder rewards</li>
-<li>Expanding Telegram &amp; X presence</li>
-<li>NFT Genesis collection announced</li>
-</ul>
-</div>
-<div class="phase">
-<h3>Phase 3: Utility &amp; Rewards <span class="status">(Next)</span></h3>
-<ul>
-<li>Launch Genesis NFT collection</li>
-<li>Holder rewards system</li>
-<li>Strategic partnerships</li>
-<li>Push through $20K → $50K MC</li>
-</ul>
-</div>
-<div class="phase">
-<h3>Phase 4: The Moon Mission <span class="status">(Future)</span></h3>
-<ul>
-<li>Full staking platform</li>
-<li>DAO governance</li>
-<li>Large-scale partnerships</li>
-<li>$0.01 target milestone</li>
-</ul>
-</div>
-</div>
-</div>
-<!-- Merch -->
-<div class="section panel grid two">
-<div>
-<h2>Official $BAGZ Merch</h2>
-<p>Rep the raccoon and fuel the mission. <strong>50% of profits go to marketing.</strong></p>
-<a class="btn" href="https://bagzraccoon.etsy.com/listing/4348345111" target="_blank">Shop on Etsy</a>
-</div>
-<div class="center" style="font-size:60px">🦝💎</div>
-</div>
-<!-- Footer -->
-<footer class="panel">
-<div>Network: Solana (SOL) • Pair: $BAGZ/USDC</div>
-<div class="mt8">
-<a class="btn" href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank">BUY $BAGZ</a>
-<a class="btn alt" href="https://t.me/bagzraccoon/3" target="_blank">Join Telegram</a>
-</div>
-<div class="mt8" style="font-size:12px; opacity:.7">© <span id="year"></span> $BAGZ — Community Powered</div>
-</footer>
-</div>
-<!-- Sticky Buy -->
-<a class="btn sticky" href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank">BUY $BAGZ</a>
-<script>
-    // year stamp
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">$BAGZ</div>
+      <nav>
+        <a href="#music">Music</a>
+        <a href="#nfts">NFTs</a>
+        <a href="#story">Story</a>
+        <a href="#links">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>From Akron to the Moon</h1>
+        <p>$BAGZ is built by the people, for the people — powered by Solana, staking, and culture.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank" rel="noopener">Buy on Moonshot</a>
+          <a class="btn ghost" href="https://jup.ag/swap/SOL-BAZ" target="_blank" rel="noopener">Buy on Jupiter</a>
+        </div>
+        <div class="row mono ca">CA: B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</div>
+      </div>
+      <div class="coin"></div>
+    </div>
+  </section>
+
+  <section id="music" class="panel">
+    <div class="container">
+      <h2>$BAGZ Sound — Autoplay</h2>
+      <p class="muted">Music starts automatically when allowed by your browser. Use the player to pause or switch tracks.</p>
+      <div class="player">
+        <button id="playToggle" class="btn primary">⏸ Pause</button>
+        <select id="trackSelect" class="select">
+          <option value="assets/media/bagz_dumpsters_to_moon.mp3">$BAGZ — From Dumpsters to the Moon</option>
+          <option value="assets/media/up_to_the_moon.mp3">Up To The Moon</option>
+          <option value="assets/media/stackin_up_with_bagz.mp3">Stackin' Up with $BAGZ</option>
+        </select>
+        <audio id="audio" autoplay loop>
+          <source src="assets/media/bagz_dumpsters_to_moon.mp3" type="audio/mpeg">
+        </audio>
+        <small class="muted">Tip: Some browsers require a click to start audio. If you don't hear it, press Play.</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="nfts" class="panel alt">
+    <div class="container grid-2">
+      <div>
+        <h2>Genesis NFTs — 20 Only</h2>
+        <p>OG keys to the $BAGZ kingdom. Holders get bonus entries in contests and future perks.</p>
+        <ul class="bullets">
+          <li>Supply: 20 total</li>
+          <li>Mint price: 0.08 SOL</li>
+          <li>Mint link: <a href="https://launchmynft.io/sol/20022" target="_blank" rel="noopener">launchmynft.io/sol/20022</a></li>
+        </ul>
+        <div class="mint-box">
+          <div class="label">Mint Address</div>
+          <div class="mono">https://launchmynft.io/sol/20022</div>
+          <button class="btn ghost" onclick="navigator.clipboard.writeText('https://launchmynft.io/sol/20022');this.textContent='Copied!';">Copy</button>
+        </div>
+      </div>
+      <div class="nft-card">
+        <div class="nft-img"></div>
+        <div class="nft-cap">$BAGZ Raccoon — Genesis #001</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="panel">
+    <div class="container">
+      <h2>The Movement</h2>
+      <p class="lead">Just a kit from Akron — look at us now. $BAGZ started with heart and hustle, and turned scraps into momentum.</p>
+      <p>In two months we shipped a live token on Solana, locked liquidity, launched staking with daily rewards, and dropped the Genesis NFTs. $BAGZ is built to change lives through community, education, and opportunity. The raccoon army builds together — buy, stake, mint, and spread the word.</p>
+    </div>
+  </section>
+
+  <section id="links" class="panel alt">
+    <div class="container grid-3">
+      <div class="card">
+        <h3>Trade & Track</h3>
+        <a class="btn ghost" href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank">Moonshot</a>
+        <a class="btn ghost" href="https://jup.ag/swap/SOL-BAZ" target="_blank">Jupiter</a>
+        <a class="btn ghost" href="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" target="_blank">Dexscreener</a>
+      </div>
+      <div class="card">
+        <h3>Stake & Lock</h3>
+        <a class="btn ghost" href="https://app.streamflow.finance/staking/solana/mainnet/9VyNXKPziqdra4XKyvfsdH37DwPLycwybUMyXsCLC9jw" target="_blank">Stake $BAGZ</a>
+        <a class="btn ghost" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">Liquidity Lock</a>
+      </div>
+      <div class="card">
+        <h3>Community</h3>
+        <a class="btn ghost" href="https://x.com/Bagz4TheMoon" target="_blank">@Bagz4TheMoon on X</a>
+        <a class="btn ghost" href="https://t.me/bagzraccoon" target="_blank">Telegram</a>
+        <a class="btn ghost" href="https://discord.gg/jGPWm6s6" target="_blank">Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container foot">
+      <div>© 2025 $BAGZ • Solana</div>
+      <div class="mono small">CA: B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
