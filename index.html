@@ -99,6 +99,17 @@
 .bagz-img{width:100%;max-width:520px;border-radius:12px;border:1px solid #1a2238}
 @media (max-width:900px){.bagz-grid{grid-template-columns:1fr}}
 </style>
+
+<style>
+/* Link pill bar to visually match hero buttons */
+.bagz-linkbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.bagz-pill{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.1rem;border-radius:999px;border:1px solid #26314a;background:#0e1422;color:#fff;text-decoration:none;transition:.2s}
+.bagz-pill:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.bagz-pill.primary{background:linear-gradient(135deg,#ff3d71,#ff7a7a);border-color:transparent}
+/* Ensure NFT image shows even if parent CSS conflicts */
+#bagz-nfts .bagz-img{display:block;max-width:520px;width:100%;height:auto}
+</style>
+
 </head>
 <body>
   <div class="container">
@@ -244,7 +255,7 @@
       </div>
     </div>
     <div>
-      <img src="assets/img/genesis-001.png" alt="$BAGZ Genesis #001" class="bagz-img">
+      <img src="./assets/img/genesis-001.png" alt="$BAGZ Genesis #001" class="bagz-img">
     </div>
   </div>
 </section>
@@ -257,32 +268,46 @@
   </div>
 </section>
 
+
 <section id="bagz-links" class="bagz-panel alt">
-  <div class="bagz-container bagz-grid">
-    <div class="bagz-card">
-      <h3>Trade & Track</h3>
-      <p><a href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank">Moonshot</a> • <a href="https://jup.ag/swap/SOL-BAZ" target="_blank">Jupiter</a> • <a href="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" target="_blank">Dexscreener</a></p>
-    </div>
-    <div class="bagz-card">
-      <h3>Stake & Lock</h3>
-      <p><a href="https://app.streamflow.finance/staking/solana/mainnet/9VyNXKPziqdra4XKyvfsdH37DwPLycwybUMyXsCLC9jw" target="_blank">Stake $BAGZ</a> • <a href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">Liquidity Lock</a></p>
-    </div>
-    <div class="bagz-card">
-      <h3>Community</h3>
-      <p><a href="https://x.com/Bagz4TheMoon" target="_blank">@Bagz4TheMoon</a> • <a href="https://t.me/bagzraccoon" target="_blank">Telegram</a> • <a href="https://discord.gg/jGPWm6s6" target="_blank">Discord</a></p>
+  <div class="bagz-container">
+    <h2 class="bagz-h2">Quick Links</h2>
+    <div class="bagz-linkbar">
+      <a class="bagz-pill primary" href="https://moonshot.com?ref=Loc1PzLVfq" target="_blank">Buy on Moonshot</a>
+      <a class="bagz-pill" href="https://jup.ag/swap/SOL-BAZ" target="_blank">Buy on Jupiter</a>
+      <a class="bagz-pill" href="https://app.streamflow.finance/staking/solana/mainnet/9VyNXKPziqdra4XKyvfsdH37DwPLycwybUMyXsCLC9jw" target="_blank">Stake $BAGZ</a>
+      <a class="bagz-pill" href="https://dexscreener.com/solana/g6eo16smkvb2fyxldebng3hmpmulowijxnabkzj46jk8" target="_blank">Chart</a>
+      <a class="bagz-pill" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">Liquidity Lock</a>
+      <a class="bagz-pill" href="https://x.com/Bagz4TheMoon" target="_blank">X / Twitter</a>
+      <a class="bagz-pill" href="https://t.me/bagzraccoon" target="_blank">Telegram</a>
+      <a class="bagz-pill" href="https://discord.gg/jGPWm6s6" target="_blank">Discord</a>
     </div>
   </div>
 </section>
 
-<script>(function(){
-var a=document.getElementById('bagzAudio');
-var b=document.getElementById('bagzPlay');
-var s=document.getElementById('bagzTrack');
-if(!a||!b||!s) return;
-function boot(){a.play().then(()=>{b.textContent='⏸ Pause';}).catch(()=>{b.textContent='▶ Play';});}
-document.addEventListener('DOMContentLoaded',boot);
-b.addEventListener('click',()=>{if(a.paused){a.play();b.textContent='⏸ Pause';}else{a.pause();b.textContent='▶ Play';}});
-s.addEventListener('change',()=>{var was=!a.paused;a.src=s.value;a.load();if(was) a.play();});
-})();</script>
+
+
+
+<script>
+(function(){
+  var a=document.getElementById('bagzAudio');
+  var b=document.getElementById('bagzPlay');
+  var s=document.getElementById('bagzTrack');
+  if(!a||!b||!s) return;
+  a.muted = true; // allow autoplay
+  function updateBtn(){ b.textContent = a.paused ? '▶ Play' : '⏸ Pause'; }
+  function boot(){
+    a.play().finally(updateBtn);
+    // Unmute on first user interaction
+    function unmute(){ a.muted=false; document.removeEventListener('click',unmute); document.removeEventListener('keydown',unmute); }
+    document.addEventListener('click',unmute,{once:true});
+    document.addEventListener('keydown',unmute,{once:true});
+  }
+  if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded',boot);
+  b.addEventListener('click',function(){ if(a.paused){ a.play(); } else { a.pause(); } updateBtn(); });
+  s.addEventListener('change',function(){ var was=!a.paused; a.src=this.value; a.load(); if(was) a.play(); updateBtn(); });
+})();
+</script>
+
 </body>
 </html>
