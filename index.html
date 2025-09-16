@@ -84,30 +84,24 @@
   </style>
 
 <style>
-.bagz-panel{padding:60px 0;background:#0e1422;color:#f3f6ff;border-top:1px solid #121a2b;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
-.bagz-panel.alt{background:#0b111c}
+.bagz-panel{padding:48px 0;background:transparent;color:inherit;border:0}
+.bagz-panel.alt{background:transparent}
 .bagz-container{max-width:1100px;margin:0 auto;padding:0 20px}
 .bagz-h2{margin:.2rem 0 1rem;font-size:2rem;font-weight:800;letter-spacing:.3px}
-.bagz-muted{color:#a9b2ce}
-.bagz-player{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#0b111c;border:1px solid #1a2238;border-radius:12px;padding:14px}
-.bagz-btn{display:inline-flex;align-items:center;border-radius:999px;border:1px solid #26314a;padding:.6rem 1rem;color:#fff;background:#0c1320;cursor:pointer}
-.bagz-btn.primary{background:linear-gradient(135deg,#ff3d71,#ff7a7a);border-color:transparent}
-.bagz-select{background:#0d1628;color:#fff;border:1px solid #26314a;border-radius:8px;padding:.45rem .7rem}
+.bagz-muted{opacity:.8}
+.bagz-player{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px}
+.bagz-btn, .bagz-pill{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);color:inherit;text-decoration:none;transition:.2s}
+.bagz-btn.primary, .bagz-pill.primary{background:linear-gradient(135deg,#ff3d71,#ff7a7a);border-color:transparent;color:#fff}
+.bagz-pill:hover, .bagz-btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(0,0,0,.25)}
+.bagz-select{background:rgba(255,255,255,0.05);color:inherit;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:.45rem .7rem}
 .bagz-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
-.bagz-card{background:#0b111c;border:1px solid #1a2238;border-radius:12px;padding:16px}
-.bagz-mono{font-family:ui-monospace, Menlo, Consolas, monospace}
-.bagz-img{width:100%;max-width:520px;border-radius:12px;border:1px solid #1a2238}
-@media (max-width:900px){.bagz-grid{grid-template-columns:1fr}}
-</style>
-
-<style>
-/* Link pill bar to visually match hero buttons */
+.bagz-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px}
+.bagz-mono{font-family:ui-monospace, Menlo, Consolas, monospace; font-size:.95rem}
+.bagz-img{width:100%;max-width:520px;border-radius:12px;border:1px solid rgba(255,255,255,0.10)}
 .bagz-linkbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-.bagz-pill{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.1rem;border-radius:999px;border:1px solid #26314a;background:#0e1422;color:#fff;text-decoration:none;transition:.2s}
-.bagz-pill:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(0,0,0,.25)}
-.bagz-pill.primary{background:linear-gradient(135deg,#ff3d71,#ff7a7a);border-color:transparent}
-/* Ensure NFT image shows even if parent CSS conflicts */
-#bagz-nfts .bagz-img{display:block;max-width:520px;width:100%;height:auto}
+.bagz-ca{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.bagz-ca .bagz-mono{padding:.35rem .55rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px}
+@media (max-width:900px){.bagz-grid{grid-template-columns:1fr}}
 </style>
 
 </head>
@@ -143,7 +137,7 @@
         <li><strong>Total Supply:</strong> 1,000,000,000 BAZ</li>
         <li><strong>Taxes:</strong> 0% in Phase 1 — simple buys/sells. <em>Phase 2</em> may introduce light mechanics (TBA).</li>
         <li><strong>Liquidity:</strong> Locked until Aug 8, 2026 — <a target="_blank" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh">View Streamflow Lock</a></li>
-        <li><strong>Contract (Mint):</strong> <code>B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</code></li>
+        <li><strong>Contract (Mint):</strong> <code><span class="bagz-mono">B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</span> <button class="bagz-btn" onclick="navigator.clipboard.writeText('B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy CA',1200);">Copy CA</button></code></li>
       </ul>
     </div>
 
@@ -222,18 +216,17 @@
 <section id="bagz-music" class="bagz-panel">
   <div class="bagz-container">
     <h2 class="bagz-h2">$BAGZ Sound — Autoplay</h2>
-    <p class="bagz-muted">Music starts automatically when allowed by your browser. Use the player to pause or switch tracks.</p>
+    <p class="bagz-muted">Music starts automatically (muted). Tap anywhere, or use Play, to unmute.</p>
     <div class="bagz-player">
-      <button id="bagzPlay" class="bagz-btn primary">⏸ Pause</button>
+      <button id="bagzPlay" class="bagz-btn primary">▶ Play</button>
       <select id="bagzTrack" class="bagz-select">
         <option value="assets/media/bagz_dumpsters_to_moon.mp3">$BAGZ — From Dumpsters to the Moon</option>
         <option value="assets/media/up_to_the_moon.mp3">Up To The Moon</option>
         <option value="assets/media/stackin_up_with_bagz.mp3">Stackin' Up with $BAGZ</option>
       </select>
-      <audio id="bagzAudio" autoplay loop>
+      <audio id="bagzAudio" autoplay loop playsinline muted>
         <source src="assets/media/bagz_dumpsters_to_moon.mp3" type="audio/mpeg">
       </audio>
-      <small class="bagz-muted">If audio is blocked, tap Play.</small>
     </div>
   </div>
 </section>
@@ -251,7 +244,7 @@
       <div class="bagz-card">
         <div>Mint Address</div>
         <div class="bagz-mono">https://launchmynft.io/sol/20022</div>
-        <button class="bagz-btn" onclick="navigator.clipboard.writeText('https://launchmynft.io/sol/20022');this.textContent='Copied!'">Copy</button>
+        <button class="bagz-btn" onclick="navigator.clipboard.writeText('https://launchmynft.io/sol/20022');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1200);">Copy</button>
       </div>
     </div>
     <div>
@@ -268,7 +261,6 @@
   </div>
 </section>
 
-
 <section id="bagz-links" class="bagz-panel alt">
   <div class="bagz-container">
     <h2 class="bagz-h2">Quick Links</h2>
@@ -280,12 +272,9 @@
       <a class="bagz-pill" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh" target="_blank">Liquidity Lock</a>
       <a class="bagz-pill" href="https://x.com/Bagz4TheMoon" target="_blank">X / Twitter</a>
       <a class="bagz-pill" href="https://t.me/bagzraccoon" target="_blank">Telegram</a>
-      <a class="bagz-pill" href="https://discord.gg/jGPWm6s6" target="_blank">Discord</a>
     </div>
   </div>
 </section>
-
-
 
 
 <script>
@@ -294,18 +283,12 @@
   var b=document.getElementById('bagzPlay');
   var s=document.getElementById('bagzTrack');
   if(!a||!b||!s) return;
-  a.muted = true; // allow autoplay
-  function updateBtn(){ b.textContent = a.paused ? '▶ Play' : '⏸ Pause'; }
-  function boot(){
-    a.play().finally(updateBtn);
-    // Unmute on first user interaction
-    function unmute(){ a.muted=false; document.removeEventListener('click',unmute); document.removeEventListener('keydown',unmute); }
-    document.addEventListener('click',unmute,{once:true});
-    document.addEventListener('keydown',unmute,{once:true});
-  }
+  function setBtn(){ b.textContent = a.paused ? '▶ Play' : '⏸ Pause'; }
+  function unmute(){ a.muted=false; document.removeEventListener('click',unmute); document.removeEventListener('touchstart',unmute); document.removeEventListener('keydown',unmute); }
+  function boot(){ a.play().finally(setBtn); document.addEventListener('click',unmute,{once:true}); document.addEventListener('touchstart',unmute,{once:true}); document.addEventListener('keydown',unmute,{once:true}); }
   if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded',boot);
-  b.addEventListener('click',function(){ if(a.paused){ a.play(); } else { a.pause(); } updateBtn(); });
-  s.addEventListener('change',function(){ var was=!a.paused; a.src=this.value; a.load(); if(was) a.play(); updateBtn(); });
+  b.addEventListener('click',function(){ if(a.paused){ a.play(); } else { a.pause(); } setBtn(); });
+  s.addEventListener('change',function(){ var was=!a.paused; a.src=this.value; a.load(); if(was) a.play(); setBtn(); });
 })();
 </script>
 
