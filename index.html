@@ -89,18 +89,20 @@
 .bagz-container{max-width:1100px;margin:0 auto;padding:0 20px}
 .bagz-h2{margin:.2rem 0 1rem;font-size:2rem;font-weight:800;letter-spacing:.3px}
 .bagz-muted{opacity:.8}
-.bagz-player{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px}
-.bagz-btn, .bagz-pill{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);color:inherit;text-decoration:none;transition:.2s}
-.bagz-btn.primary, .bagz-pill.primary{background:linear-gradient(135deg,#ff3d71,#ff7a7a);border-color:transparent;color:#fff}
-.bagz-pill:hover, .bagz-btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(0,0,0,.25)}
-.bagz-select{background:rgba(255,255,255,0.05);color:inherit;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:.45rem .7rem}
 .bagz-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
 .bagz-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px}
 .bagz-mono{font-family:ui-monospace, Menlo, Consolas, monospace; font-size:.95rem}
-.bagz-img{width:100%;max-width:520px;border-radius:12px;border:1px solid rgba(255,255,255,0.10)}
+.bagz-img{width:100%;max-width:520px;border-radius:12px;border:1px solid rgba(255,255,255,0.10);display:block}
 .bagz-linkbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.bagz-pill{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);color:inherit;text-decoration:none;transition:.2s}
+.bagz-pill.primary{background:linear-gradient(135deg,#ff3d71,#ff7a7a);border-color:transparent;color:#fff}
+.bagz-pill:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(0,0,0,.25)}
 .bagz-ca{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
 .bagz-ca .bagz-mono{padding:.35rem .55rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px}
+/* Simple player layout */
+.simple-player{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.simple-player select{background:rgba(255,255,255,0.05);color:inherit;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:.45rem .7rem}
+.simple-player button{display:inline-flex;align-items:center;justify-content:center;padding:.55rem .9rem;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);color:inherit}
 @media (max-width:900px){.bagz-grid{grid-template-columns:1fr}}
 </style>
 
@@ -137,7 +139,7 @@
         <li><strong>Total Supply:</strong> 1,000,000,000 BAZ</li>
         <li><strong>Taxes:</strong> 0% in Phase 1 — simple buys/sells. <em>Phase 2</em> may introduce light mechanics (TBA).</li>
         <li><strong>Liquidity:</strong> Locked until Aug 8, 2026 — <a target="_blank" href="https://app.streamflow.finance/contract/solana/mainnet/5cdf3iBGELf8nNi1ZqY5xU3LiiRUstuJ85ik9rqrf7sh">View Streamflow Lock</a></li>
-        <li><strong>Contract (Mint):</strong> <code><span class="bagz-mono">B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</span> <button class="bagz-btn" onclick="navigator.clipboard.writeText('B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy CA',1200);">Copy CA</button></code></li>
+        <li><strong>Contract (Mint):</strong> <code><span class="bagz-mono">B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon</span> <button onclick="navigator.clipboard.writeText('B6Gu68Jr1TQxgapgA6H66SGQtsBBtpjafq8iXFBsmoon');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy CA',1200);">Copy CA</button></code></li>
       </ul>
     </div>
 
@@ -215,16 +217,16 @@
 
 <section id="bagz-music" class="bagz-panel">
   <div class="bagz-container">
-    <h2 class="bagz-h2">$BAGZ Sound — Autoplay</h2>
-    <p class="bagz-muted">Music starts automatically (muted). Tap anywhere, or use Play, to unmute.</p>
-    <div class="bagz-player">
-      <button id="bagzPlay" class="bagz-btn primary">▶ Play</button>
-      <select id="bagzTrack" class="bagz-select">
+    <h2 class="bagz-h2">Sound On: $BAGZ</h2>
+    <p class="bagz-muted">Autoplay starts muted. Tap play or anywhere to unmute.</p>
+    <div class="simple-player">
+      <button id="bagzPlay">▶ Play</button>
+      <select id="bagzTrack">
         <option value="assets/media/bagz_dumpsters_to_moon.mp3">$BAGZ — From Dumpsters to the Moon</option>
         <option value="assets/media/up_to_the_moon.mp3">Up To The Moon</option>
         <option value="assets/media/stackin_up_with_bagz.mp3">Stackin' Up with $BAGZ</option>
       </select>
-      <audio id="bagzAudio" autoplay loop playsinline muted>
+      <audio id="bagzAudio" autoplay loop playsinline muted controls style="min-width:260px;">
         <source src="assets/media/bagz_dumpsters_to_moon.mp3" type="audio/mpeg">
       </audio>
     </div>
@@ -244,11 +246,12 @@
       <div class="bagz-card">
         <div>Mint Address</div>
         <div class="bagz-mono">https://launchmynft.io/sol/20022</div>
-        <button class="bagz-btn" onclick="navigator.clipboard.writeText('https://launchmynft.io/sol/20022');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1200);">Copy</button>
+        <button onclick="navigator.clipboard.writeText('https://launchmynft.io/sol/20022');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1200);">Copy</button>
       </div>
     </div>
     <div>
-      <img src="./assets/img/genesis-001.png" alt="$BAGZ Genesis #001" class="bagz-img">
+      <img src="./assets/img/genesis-001.png" alt="$BAGZ Genesis #001" class="bagz-img" onerror="this.style.display='none';document.getElementById('bagzNftFallback').style.display='block';">
+      <div id="bagzNftFallback" class="bagz-card" style="display:none">NFT image not found. Make sure the file exists at <span class="bagz-mono">/assets/img/genesis-001.png</span>.</div>
     </div>
   </div>
 </section>
@@ -285,7 +288,7 @@
   if(!a||!b||!s) return;
   function setBtn(){ b.textContent = a.paused ? '▶ Play' : '⏸ Pause'; }
   function unmute(){ a.muted=false; document.removeEventListener('click',unmute); document.removeEventListener('touchstart',unmute); document.removeEventListener('keydown',unmute); }
-  function boot(){ a.play().finally(setBtn); document.addEventListener('click',unmute,{once:true}); document.addEventListener('touchstart',unmute,{once:true}); document.addEventListener('keydown',unmute,{once:true}); }
+  function boot(){ try{ a.play(); }catch(e){} setBtn(); document.addEventListener('click',unmute,{once:true}); document.addEventListener('touchstart',unmute,{once:true}); document.addEventListener('keydown',unmute,{once:true}); }
   if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded',boot);
   b.addEventListener('click',function(){ if(a.paused){ a.play(); } else { a.pause(); } setBtn(); });
   s.addEventListener('change',function(){ var was=!a.paused; a.src=this.value; a.load(); if(was) a.play(); setBtn(); });
